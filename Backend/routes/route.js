@@ -1,5 +1,5 @@
 import express from "express";
-import send_reservation from "../controller/controller.js";
+import send_form from "../controller/controller.js";
 
 const router = express.Router();
 

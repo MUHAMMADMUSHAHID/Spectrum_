@@ -1,5 +1,5 @@
-import ErrorHandler from "../middlewares/error.js";
-import { form } from "../models/form.js";
+import ErrorHandler from "../middleware/error.js";
+import { Form } from "../models/form.js";
 
 
 const send_form = async (req, res, next) => {
