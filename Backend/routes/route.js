@@ -3,6 +3,6 @@ import send_form from "../controller/controller.js";
 
 const router = express.Router();
 
-router.post("/send", send_form);
+router.post("/submit", send_form);
 
 export default router;

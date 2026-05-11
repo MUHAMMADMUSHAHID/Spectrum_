@@ -4,7 +4,13 @@ import { Form } from "../models/form.js";
 
 const send_form = async (req, res, next) => {
   const { Name, email, phone, certification, message } = req.body;
-  if (!Name || !email || !phone || !certification || !message) {
+  if  (
+  !Name?.trim() ||
+  !email?.trim() ||
+  !phone?.trim() ||
+  !certification?.trim() ||
+  !message?.trim()
+) {
     return next(new ErrorHandler("Please Fill Full Form!", 400));
   }
 
