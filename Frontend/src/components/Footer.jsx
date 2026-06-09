@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const links = [
   { label: "About", href: "#about" },
@@ -12,43 +13,64 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const standards = ["ISO 9001", "ISO 14001", "ISO 45001", "ISO 27001", "ISO 22000", "ISO 13485", "NABL", "CE Marking"];
+const standards = [
+  "ISO 9001",
+  "ISO 14001",
+  "ISO 45001",
+  "ISO 27001",
+  "ISO 22000",
+  "ISO 13485",
+  "NABL",
+  "CE Marking",
+];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gray-900 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-gray-900 border-t border-white/10">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-display font-bold text-white text-lg shadow-md shadow-amber-500/30">
-                S
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500">
+                <span className="text-lg font-bold text-white">S</span>
               </div>
+
               <div>
-                <div className="font-display font-bold text-white text-sm">SPECTRUM</div>
-                <div className="text-amber-400 text-[9px] font-body tracking-widest uppercase">Quality Management</div>
+                <h3 className="text-sm font-semibold tracking-tight text-white">
+                  SPECTRUM
+                </h3>
+                <p className="text-xs text-indigo-400">
+                  Quality Management
+                </p>
               </div>
             </div>
-            <p className="font-body text-gray-400 text-xs leading-relaxed mb-4">
-              Building Stable Systems for Desired Results. ISO consulting & certification since 2001.
+
+            <p className="text-sm leading-6 text-gray-400">
+              Building Stable Systems for Desired Results. Providing ISO
+              consulting, certification, training and management system
+              implementation services since 2001.
             </p>
-            <div className="font-body text-gray-500 text-xs">
-              © {new Date().getFullYear()} Spectrum Quality Management. All rights reserved.
-            </div>
+
+            <p className="mt-6 text-sm text-gray-500">
+              © {new Date().getFullYear()} Spectrum Quality Management.
+            </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {links.map((l) => (
-                <li key={l.label}>
+            <h4 className="mb-5 text-base font-semibold tracking-tight text-white">
+              Quick Links
+            </h4>
+
+            <ul className="space-y-3">
+              {links.map((link) => (
+                <li key={link.label}>
                   <a
-                    href={l.href}
-                    className="font-body text-gray-400 hover:text-amber-400 text-xs transition-colors"
+                    href={link.href}
+                    className="text-sm text-gray-400 transition-colors duration-200 hover:text-indigo-400"
                   >
-                    {l.label}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -57,11 +79,17 @@ export default function Footer() {
 
           {/* Standards */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4">Our Standards</h4>
-            <ul className="space-y-2">
-              {standards.map((s) => (
-                <li key={s}>
-                  <span className="font-body text-white/50 text-xs">{s}</span>
+            <h4 className="mb-5 text-base font-semibold tracking-tight text-white">
+              Our Standards
+            </h4>
+
+            <ul className="space-y-3">
+              {standards.map((standard) => (
+                <li
+                  key={standard}
+                  className="text-sm text-gray-400"
+                >
+                  {standard}
                 </li>
               ))}
             </ul>
@@ -69,51 +97,118 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-body font-semibold text-white text-sm mb-4">Contact</h4>
-            <div className="space-y-3">
+            <h4 className="mb-5 text-base font-semibold tracking-tight text-white">
+              Contact Us
+            </h4>
+
+            <div className="space-y-5">
               <div>
-                <div className="font-body text-white/30 text-[10px] uppercase tracking-wider mb-0.5">Address</div>
-                <p className="font-body text-white/60 text-xs">Unit No PAP-R-251, Mumbai, India</p>
+                <p className="mb-1 text-xs uppercase tracking-wider text-gray-500">
+                  Address
+                </p>
+
+                <p className="text-sm leading-6 text-gray-400">
+                  Unit No PAP-R-251,
+                  <br />
+                  Rabale MIDC,
+                  <br />
+                  Navi Mumbai, Maharashtra, India
+                </p>
               </div>
+
               <div>
-                <div className="font-body text-white/30 text-[10px] uppercase tracking-wider mb-0.5">Phone</div>
-                <a href="tel:+919324346684" className="font-body text-white/60 hover:text-amber-400 text-xs transition-colors">9324346684</a>
-                <br />
-                <a href="tel:+919930076684" className="font-body text-white/60 hover:text-amber-400 text-xs transition-colors">9930076684</a>
+                <p className="mb-1 text-xs uppercase tracking-wider text-gray-500">
+                  Phone
+                </p>
+
+                <a
+                  href="tel:+919324346684"
+                  className="block text-sm text-gray-400 transition-colors hover:text-indigo-400"
+                >
+                  +91 93243 46684
+                </a>
+
+                <a
+                  href="tel:+919930076684"
+                  className="block text-sm text-gray-400 transition-colors hover:text-indigo-400"
+                >
+                  +91 99300 76684
+                </a>
               </div>
+
               <div>
-                <div className="font-body text-white/30 text-[10px] uppercase tracking-wider mb-0.5">Email</div>
-                <a href="mailto:info@isoqms.in" className="font-body text-white/60 hover:text-amber-400 text-xs transition-colors block">info@isoqms.in</a>
-                <a href="mailto:enquiry@isoqms.in" className="font-body text-white/60 hover:text-amber-400 text-xs transition-colors block">enquiry@isoqms.in</a>
+                <p className="mb-1 text-xs uppercase tracking-wider text-gray-500">
+                  Email
+                </p>
+
+                <a
+                  href="mailto:info@isoqms.in"
+                  className="block text-sm text-gray-400 transition-colors hover:text-indigo-400"
+                >
+                  info@isoqms.in
+                </a>
+
+                <a
+                  href="mailto:enquiry@isoqms.in"
+                  className="block text-sm text-gray-400 transition-colors hover:text-indigo-400"
+                >
+                  enquiry@isoqms.in
+                </a>
               </div>
+
               <div>
-                <div className="font-body text-white/30 text-[10px] uppercase tracking-wider mb-1">Branches</div>
-                <div className="font-body text-white/50 text-xs leading-relaxed">
-                  Thane · Pune · Goa · Indore · Ahmedabad · Bangalore · Chennai · Delhi
-                </div>
+                <p className="mb-1 text-xs uppercase tracking-wider text-gray-500">
+                  Branches
+                </p>
+
+                <p className="text-sm leading-6 text-gray-400">
+                  Thane • Pune • Goa • Indore
+                  <br />
+                  Ahmedabad • Bangalore
+                  <br />
+                  Chennai • Delhi
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-white/30 text-xs text-center sm:text-left">
-            Spectrum Quality Management — Building Stable Systems for Desired Results
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/50 hover:text-cyan-400 hover:border-cyan-400/30 transition-all text-xs font-bold">
-              in
-            </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/50 hover:text-cyan-400 hover:border-cyan-400/30 transition-all text-xs font-bold">
-              f
-            </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/50 hover:text-cyan-400 hover:border-cyan-400/30 transition-all text-xs font-bold">
-              ig
-            </a>
+        {/* Bottom Bar */}
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-sm text-gray-500 text-center sm:text-left">
+              Spectrum Quality Management — Building Stable Systems for Desired
+              Results
+            </p>
+
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
+              >
+                in
+              </a>
+
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
+              >
+                f
+              </a>
+
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
+              >
+                ig
+              </a>
+            </div>
           </div>
         </div>
       </div>

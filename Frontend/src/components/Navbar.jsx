@@ -1,17 +1,44 @@
 'use client'
-
+import { Link } from "react-router-dom";
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Home', href: '#' },
-  { name: 'About Us', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Training', href: '#' },
-  { name: 'Clients', href: '#' },
-  { name: 'Testimonials', href: '#' },
-  { name: 'Contact Us', href: '#' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/AboutUs' },
+  {name: "Services",
+    submenu: [
+      {
+        name: "ISO 14001:2015",
+        href: "/services/iso-14001-2015",
+      },
+      {
+        name: "ISO 45001:2018",
+        href: "/services/iso-45001-2018",
+      },
+      {
+        name: "ISO 22000:2018 / HACCP",
+        href: "/services/iso-22000-2018",
+      },
+      {
+        name: "ISO 13485:2016",
+        href: "/services/iso-13485-2016",
+      },
+      {
+        name: "ISO 27001:2022",
+        href: "/services/iso-27001-2022",
+      },
+      {
+        name: "IATF 16949:2016",
+        href: "/services/iatf-16949-2016",
+      },
+    ],
+  },
+  { name: 'Training', href: '/Training' },
+  { name: 'Clients', href: '/Clients' },
+  { name: 'Testimonials', href: '/Testimonials' },
+  { name: 'Contact Us', href: '/ContactUs' },
 ]
 
 export default function Example() {
@@ -19,9 +46,9 @@ export default function Example() {
 
   return (
     <div className="bg-gray-900">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <nav aria-label="Global" className="flex items-center justify-between p-10 lg:px-8 position-fixed">
-          <div className="flex lg:flex-1">
+      <header className="fixed inset-x-0 top-0 z-50 bg-gray-900/90 backdrop-blur-md">
+       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="flex items-center ">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
@@ -41,17 +68,36 @@ export default function Example() {
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-white">
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-white">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:gap-x-12">
+            {navigation.map((item) =>
+  item.submenu ? (
+    <div key={item.name} className="group relative">
+      <button className="text-sm font-semibold text-white">
+        {item.name}
+      </button>
+
+      <div className="absolute left-0 top-full hidden min-w-65 rounded-lg border border-white/10 bg-gray-900 p-2 shadow-xl group-hover:block">
+        {item.submenu.map((sub) => (
+          <a
+            key={sub.name}
+            href={sub.href}
+            className="block rounded-md px-4 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-indigo-400"
+          >
+            {sub.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <a
+      key={item.name}
+      href={item.href}
+      className="text-sm font-semibold text-white hover:text-indigo-400"
+    >
+      {item.name}
+    </a>
+  )
+)}
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -78,23 +124,37 @@ export default function Example() {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-white/10">
                 <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-white/5"
-                  >
-                    Log in
-                  </a>
+                 {navigation.map((item) =>
+  item.submenu ? (
+    <div key={item.name}>
+      <div className="px-3 py-2 text-base font-semibold text-indigo-400">
+        {item.name}
+      </div>
+
+      <div className="ml-4 space-y-1">
+        {item.submenu.map((sub) => (
+          <Link
+            key={sub.name}
+            to={sub.path}
+            onClick={() => setMobileMenuOpen(false)}
+            className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-white/5"
+          >
+            {sub.name}
+          </Link>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <Link
+      key={item.name}
+      to={item.path}
+      onClick={() => setMobileMenuOpen(false)}
+      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/5"
+    >
+      {item.name}
+    </Link>
+  )
+)}
                 </div>
               </div>
             </div>
@@ -102,58 +162,7 @@ export default function Example() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-          />
-        </div>
-        <div className="mx-auto max-w-2xl py-20 sm:py-30 lg:py-40">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-5 py-3 text-sm/6 text-gray-500 ring-1 ring-white/10 hover:ring-white/20">
-              ISO 9001 Consultants in Mumbai
-            </div>
-          </div>
-          <div className="text-center">
-            <h1 className="text-8xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-              Achieve ISO Certification with Confidence
-            </h1>
-            <p className="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-              Spectrum Quality Management offers ISO Certification services to clients in Mumbai, Pune, Goa, Nasik and other major cities in India.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                Book Free 30-Min Consultation
-              </a>
-              <a href="#" className="text-sm/6 font-semibold text-white">
-                Explore Services <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-        >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
-          />
-        </div>
-      </div>
+      
     </div>
   )
 }
