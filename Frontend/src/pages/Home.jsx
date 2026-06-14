@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import {  useLocation } from 'react-router-dom'
 import Aboutus from './Aboutus'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const { hash } = useLocation()
@@ -47,10 +48,15 @@ const Home = () => {
                 href="/contact"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                Book Free 30-Min Consultation
+               <Link to="/contact">
+                   Book Free 30-Min Consultation
+                </Link>
               </a>
               <a href="/services" className="text-sm/6 font-semibold text-white">
-                Explore Services <span aria-hidden="true">→</span>
+                <Link to="/services">
+                    Explore Services
+                </Link>
+                <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
