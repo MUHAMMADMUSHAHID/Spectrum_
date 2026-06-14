@@ -1,4 +1,8 @@
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import Clients from './Clients'
+import Testimonials from './Testimonials'
+import EmployeeSection from '../components/EmployeeSection'
+import TeamSection from '../components/TeamSection'
 
 const features = [
   {
@@ -29,7 +33,7 @@ const features = [
 
 export default function Example() {
   return (
-    <div className="bg-gray-900 py-2 sm:py-3">
+    <div className="bg-gray-900 pt-20 sm:pt-24 py-2 sm:py-3">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-base/7 font-semibold text-indigo-400">Deploy faster</h2>
@@ -57,6 +61,14 @@ export default function Example() {
           </dl>
         </div>
       </div>
+      <EmployeeSection />
+      <TeamSection />
+      <section id="clients" className="scroll-mt-28">
+        <Clients />
+      </section>
+      <section id="testimonials" className="scroll-mt-28">
+        <Testimonials />
+      </section>
     </div>
   )
 }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import api from "../api";
+import toast from "react-hot-toast";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -18,12 +20,21 @@ export default function ContactUs() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log(formData);
+  try {
+    const response = await api.post("/form/submit", {
+      Name: formData.name,
+      company: formData.company,
+      city: formData.city,
+      email: formData.email,
+      phone: formData.phone,
+      certification: formData.service,
+      message: formData.message,
+    });
 
-    alert("Thank you! Our team will contact you shortly.");
+    toast.success(response.data.message);
 
     setFormData({
       name: "",
@@ -34,7 +45,16 @@ export default function ContactUs() {
       city: "",
       message: "",
     });
-  };
+  } catch (error) {
+    console.log(error);
+  console.log(error.response);
+  console.log(error.response?.data);
+    alert(
+      error.response?.data?.message ||
+        "Something went wrong"
+    );
+  }
+};
 
   return (
     <section

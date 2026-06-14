@@ -2,33 +2,55 @@ import ErrorHandler from "../middleware/error.js";
 import { Form } from "../models/form.js";
 
 
-const send_form = async (req, res, next) => {
-  const { Name, email, phone, certification, message } = req.body;
-  if  (
-  !Name?.trim() ||
-  !email?.trim() ||
-  !phone?.trim() ||
-  !certification?.trim() ||
-  !message?.trim()
-) {
-    return next(new ErrorHandler("Please Fill Full Form!", 400));
-  }
 
+export const send_form = async (req, res) => {
+  console.log("Form request received");
+  console.log(req.body);
   try {
-    await Form.create({ Name, email, phone, certification, message });
-    res.status(201).json({
-      success: true,
-      message: "Form Sent Successfully!",
-    });
-  } catch (error) {
-    // Handle Mongoose validation errors
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map(err => err.message);
-      return next(new ErrorHandler(validationErrors.join(', '), 400));
+    const {
+      Name,
+      company,
+      city,
+      email,
+      phone,
+      certification,
+      message,
+    } = req.body;
+
+    if (
+      !Name ||
+      !email ||
+      !phone ||
+      !certification ||
+      !message
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all required fields",
+      });
     }
 
-    // Handle other errors
-    return next(error);
+    await Form.create({
+      Name,
+      company,
+      city,
+      email,
+      phone,
+      certification,
+      message,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Form Submitted Successfully!",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
   }
 };
 

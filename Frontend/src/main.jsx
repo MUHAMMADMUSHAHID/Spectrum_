@@ -4,11 +4,23 @@ import { BrowserRouter } from "react-router-dom";
 import  "./App.css";
 import App from "./App";
 import "./index.css";
+import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "./context/ThemeContext";
+
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  document.documentElement.classList.add("dark");
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <ThemeProvider>
+
     <BrowserRouter>
       <App />
+      <Toaster position="top-right" />
     </BrowserRouter>
-  </React.StrictMode>
+  </ThemeProvider>
+  
 );

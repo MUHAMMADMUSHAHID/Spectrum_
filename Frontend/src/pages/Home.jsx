@@ -1,9 +1,22 @@
-import React from 'react'
+import { useEffect } from 'react'
+import {  useLocation } from 'react-router-dom'
+import Aboutus from './Aboutus'
 
 const Home = () => {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash)
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [hash])
+
   return (
     <div className="bg-gray-900">
-    <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative isolate px-6 pt-24 sm:pt-28 lg:pt-32 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -16,7 +29,7 @@ const Home = () => {
             className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
           />
         </div>
-        <div className="mx-auto max-w-2xl py-20 sm:py-30 lg:py-40">
+        <div className="mx-auto max-w-2xl py-20 sm:py-3lg:py-40">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-5 py-3 text-sm/6 text-gray-500 ring-1 ring-white/10 hover:ring-white/20">
               ISO 9001 Consultants in Mumbai
@@ -31,12 +44,12 @@ const Home = () => {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="#"
+                href="/contact"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Book Free 30-Min Consultation
               </a>
-              <a href="#" className="text-sm/6 font-semibold text-white">
+              <a href="/services" className="text-sm/6 font-semibold text-white">
                 Explore Services <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -55,7 +68,10 @@ const Home = () => {
           />
         </div>
       </div>
-      </div>
+      <section id="about">
+        <Aboutus />
+      </section>
+    </div>
   )
 }
 

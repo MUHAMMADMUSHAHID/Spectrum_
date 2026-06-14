@@ -1,168 +1,317 @@
-'use client'
 import { Link } from "react-router-dom";
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import ThemeToggle from "./ThemeToggle";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/AboutUs' },
-  {name: "Services",
+  { name: "Home", to: "/" },
+  { name: "About Us", to: "/about" },
+
+  {
+    name: "Services",
+    to: "/services",
     submenu: [
       {
         name: "ISO 14001:2015",
-        href: "/services/iso-14001-2015",
+        to: "/services/iso-14001-2015",
       },
       {
         name: "ISO 45001:2018",
-        href: "/services/iso-45001-2018",
+        to: "/services/iso-45001-2018",
       },
       {
         name: "ISO 22000:2018 / HACCP",
-        href: "/services/iso-22000-2018",
+        to: "/services/iso-22000-2018",
       },
       {
         name: "ISO 13485:2016",
-        href: "/services/iso-13485-2016",
+        to: "/services/iso-13485-2016",
       },
       {
         name: "ISO 27001:2022",
-        href: "/services/iso-27001-2022",
+        to: "/services/iso-27001-2022",
       },
       {
         name: "IATF 16949:2016",
-        href: "/services/iatf-16949-2016",
+        to: "/services/iatf-16949-2016",
       },
     ],
   },
-  { name: 'Training', href: '/Training' },
-  { name: 'Clients', href: '/Clients' },
-  { name: 'Testimonials', href: '/Testimonials' },
-  { name: 'Contact Us', href: '/ContactUs' },
-]
 
-export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  {
+    name: "Training",
+    to: "/training",
+  },
+
+  {
+    name: "Clients",
+    to: "/clients",
+  },
+
+  {
+    name: "Testimonials",
+    to: "/testimonials",
+  },
+
+  {
+    name: "Contact Us",
+    to: "/contact",
+  },
+];
+
+export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900">
-      <header className="fixed inset-x-0 top-0 z-50 bg-gray-900/90 backdrop-blur-md">
-       <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="flex items-center ">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
-            </a>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200"
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
-            </button>
-          </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:gap-x-12">
-            {navigation.map((item) =>
-  item.submenu ? (
-    <div key={item.name} className="group relative">
-      <button className="text-sm font-semibold text-white">
-        {item.name}
-      </button>
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-all">
 
-      <div className="absolute left-0 top-full hidden min-w-65 rounded-lg border border-white/10 bg-gray-900 p-2 shadow-xl group-hover:block">
-        {item.submenu.map((sub) => (
-          <a
-            key={sub.name}
-            href={sub.href}
-            className="block rounded-md px-4 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-indigo-400"
-          >
-            {sub.name}
-          </a>
-        ))}
-      </div>
-    </div>
-  ) : (
-    <a
-      key={item.name}
-      href={item.href}
-      className="text-sm font-semibold text-white hover:text-indigo-400"
-    >
-      {item.name}
-    </a>
-  )
-)}
-          </div>
-        </nav>
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-          <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img
-                  alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                  className="h-8 w-auto"
-                />
-              </a>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="-m-2.5 rounded-md p-2.5 text-gray-200"
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+
+        {/* Logo */}
+
+        <Link to="/" className="flex items-center">
+          <img
+            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+            className="h-9 w-auto"
+            alt="Logo"
+          />
+        </Link>
+
+        {/* Desktop Navigation */}
+
+        <div className="hidden lg:flex items-center gap-8">
+
+          {navigation.map((item) =>
+            item.submenu ? (
+              <div
+                key={item.name}
+                className="relative group"
               >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon aria-hidden="true" className="size-6" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-white/10">
-                <div className="space-y-2 py-6">
-                 {navigation.map((item) =>
-  item.submenu ? (
-    <div key={item.name}>
-      <div className="px-3 py-2 text-base font-semibold text-indigo-400">
-        {item.name}
-      </div>
+                <Link
+                  to={item.to}
+                  className="font-semibold text-sm text-gray-900 dark:text-white hover:text-indigo-500 transition"
+                >
+                  {item.name}
+                </Link>
 
-      <div className="ml-4 space-y-1">
-        {item.submenu.map((sub) => (
-          <Link
-            key={sub.name}
-            to={sub.path}
-            onClick={() => setMobileMenuOpen(false)}
-            className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-white/5"
-          >
-            {sub.name}
-          </Link>
-        ))}
-      </div>
-    </div>
-  ) : (
-    <Link
-      key={item.name}
-      to={item.path}
-      onClick={() => setMobileMenuOpen(false)}
-      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/5"
-    >
-      {item.name}
-    </Link>
-  )
-)}
+                <div
+                  className="
+                  invisible
+                  opacity-0
+                  group-hover:visible
+                  group-hover:opacity-100
+                  transition-all
+                  duration-300
+                  absolute
+                  left-0
+                  top-8
+                  w-72
+                  rounded-xl
+                  bg-white
+                  dark:bg-gray-900
+                  border
+                  border-gray-200
+                  dark:border-white/10
+                  shadow-xl
+                  p-2
+                  "
+                >
+                  {item.submenu.map((sub) => (
+                    <Link
+                      key={sub.name}
+                      to={sub.to}
+                      className="
+                      block
+                      rounded-lg
+                      px-4
+                      py-2
+                      text-sm
+                      text-gray-700
+                      dark:text-gray-300
+                      hover:bg-gray-100
+                      dark:hover:bg-white/5
+                      hover:text-indigo-500
+                      transition
+                      "
+                    >
+                      {sub.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
-            </div>
-          </DialogPanel>
-        </Dialog>
-      </header>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.to}
+                className="
+                text-sm
+                font-semibold
+                text-gray-900
+                dark:text-white
+                hover:text-indigo-500
+                transition
+                "
+              >
+                {item.name}
+              </Link>
+            )
+          )}
 
-      
-    </div>
-  )
+        </div>
+
+        {/* Right Side */}
+
+        <div className="hidden lg:flex items-center gap-4">
+
+          <ThemeToggle />
+
+        </div>
+
+        {/* Mobile Button */}
+
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="lg:hidden text-gray-700 dark:text-white"
+        >
+          <Bars3Icon className="h-7 w-7" />
+        </button>
+
+      </nav>
+
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
+
+        <div className="fixed inset-0 bg-black/30" />
+
+        <Dialog.Panel
+          className="
+          fixed
+          right-0
+          top-0
+          h-full
+          w-80
+          bg-white
+          dark:bg-gray-900
+          border-l
+          border-gray-200
+          dark:border-white/10
+          p-6
+          overflow-y-auto
+          "
+        >
+
+          {/* Top */}
+
+          <div className="flex items-center justify-between">
+
+            <img
+              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+              className="h-9"
+              alt=""
+            />
+
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-gray-700 dark:text-white"
+            >
+              <XMarkIcon className="h-7 w-7" />
+            </button>
+
+          </div>
+
+          <div className="mt-5 flex justify-center">
+            <ThemeToggle />
+          </div>
+
+          <div className="mt-8 space-y-3">
+                      {navigation.map((item) =>
+            item.submenu ? (
+              <div key={item.name} className="space-y-2">
+
+                {/* Services Heading */}
+
+                <div className="px-3 py-2 text-base font-semibold text-indigo-600 dark:text-indigo-400">
+                  {item.name}
+                </div>
+
+                {/* Services Submenu */}
+
+                <div className="ml-3 space-y-1 border-l border-gray-200 dark:border-white/10 pl-3">
+
+                  {item.submenu.map((sub) => (
+                    <Link
+                      key={sub.name}
+                      to={sub.to}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="
+                      block
+                      rounded-md
+                      px-3
+                      py-2
+                      text-sm
+                      text-gray-700
+                      dark:text-gray-300
+                      hover:bg-gray-100
+                      dark:hover:bg-white/5
+                      hover:text-indigo-500
+                      transition
+                      "
+                    >
+                      {sub.name}
+                    </Link>
+                  ))}
+
+                </div>
+
+              </div>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.to}
+                onClick={() => setMobileMenuOpen(false)}
+                className="
+                block
+                rounded-lg
+                px-3
+                py-3
+                text-base
+                font-semibold
+                text-gray-900
+                dark:text-white
+                hover:bg-gray-100
+                dark:hover:bg-white/5
+                hover:text-indigo-500
+                transition
+                "
+              >
+                {item.name}
+              </Link>
+            )
+          )}
+        </div>
+
+        {/* Footer */}
+
+        <div className="mt-10 border-t border-gray-200 dark:border-white/10 pt-6">
+
+          <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+            Spectrum Quality Management
+          </p>
+
+          <p className="mt-1 text-center text-xs text-gray-400 dark:text-gray-500">
+            Building Stable Systems for Desired Results
+          </p>
+
+        </div>
+
+      </Dialog.Panel>
+
+    </Dialog>
+
+  </header>
+  );
 }

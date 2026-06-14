@@ -1,37 +1,108 @@
-export default function Example() {
+const reviews = [
+  {
+    name: "Rahul Sharma",
+    company: "ABC Industries",
+    review:
+      "Spectrum Quality Management guided us through ISO 9001 certification smoothly. Their team was extremely professional and supportive.",
+  },
+  {
+    name: "Priya Mehta",
+    company: "XYZ Pvt Ltd",
+    review:
+      "Excellent consulting services. The implementation was systematic and the audit preparation was outstanding.",
+  },
+  {
+    name: "Amit Patel",
+    company: "Patel Engineering",
+    review:
+      "Highly recommended for ISO certification. Their consultants have deep knowledge and provide practical solutions.",
+  },
+  {
+    name: "Neha Kapoor",
+    company: "NK Foods",
+    review:
+      "Professional team with quick responses. They made our ISO 22000 implementation very easy.",
+  },
+  {
+    name: "Sanjay Verma",
+    company: "SV Manufacturing",
+    review:
+      "Very satisfied with Spectrum's consulting approach. Everything was completed before deadline.",
+  },
+];
+
+export default function Testimonials() {
+  // Duplicate the array for seamless looping
+  const marqueeReviews = [...reviews, ...reviews];
+
   return (
-    <section className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-indigo-500),transparent)] opacity-10" />
-      <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 shadow-xl ring-1 shadow-indigo-500/5 ring-white/5 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-      <div className="mx-auto max-w-2xl lg:max-w-4xl">
-        <img
-          alt=""
-          src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-indigo-400.svg"
-          className="mx-auto h-12"
-        />
-        <figure className="mt-10">
-          <blockquote className="text-center text-xl/8 font-semibold text-white sm:text-2xl/9">
-            <p>
-              “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-              molestiae. Numquam corrupti in laborum sed rerum et corporis.”
-            </p>
-          </blockquote>
-          <figcaption className="mt-10">
-            <img
-              alt=""
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              className="mx-auto size-10 rounded-full"
-            />
-            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-              <div className="font-semibold text-white">Judith Black</div>
-              <svg width={3} height={3} viewBox="0 0 2 2" aria-hidden="true" className="fill-white">
-                <circle r={1} cx={1} cy={1} />
-              </svg>
-              <div className="text-gray-400">CEO of Workcation</div>
-            </div>
-          </figcaption>
-        </figure>
+    <section
+      id="testimonials"
+      className="bg-gray-900 py-20 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+
+        <div className="text-center mb-14">
+          <span className="inline-block rounded-full bg-yellow-100 px-4 py-1 text-sm font-semibold text-yellow-700">
+            ⭐ Google Reviews
+          </span>
+
+          <h2 className="mt-4 text-4xl font-bold text-gray-900">
+            What Our Clients Say
+          </h2>
+
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+            Trusted by organizations across India for ISO Certification,
+            Consultancy and Training Services.
+          </p>
+        </div>
+
+        {/* Marquee */}
+
+        <div className="overflow-hidden">
+          <div className="animate-marquee">
+            {marqueeReviews.map((review, index) => (
+              <div
+                key={index}
+                className="mx-4 w-[360px] flex-shrink-0 rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition hover:shadow-xl"
+              >
+                <div className="text-yellow-500 text-lg mb-3">
+                  ⭐⭐⭐⭐⭐
+                </div>
+
+                <p className="text-gray-600 italic leading-7">
+                  "{review.review}"
+                </p>
+
+                <div className="mt-6 border-t pt-4">
+                  <h3 className="font-semibold text-gray-900">
+                    {review.name}
+                  </h3>
+
+                  <p className="text-sm text-gray-500">
+                    {review.company}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Google Button */}
+
+        <div className="mt-14 text-center">
+          <a
+            href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-xl bg-indigo-600 px-8 py-4 text-white font-semibold shadow-lg transition hover:bg-indigo-700 hover:scale-105"
+          >
+            View All Google Reviews →
+          </a>
+        </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,50 +1,51 @@
+import Marquee from "react-fast-marquee";
+
 export default function Example() {
-  return (
-    <div className="bg-gray-900 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-center text-lg/8 font-semibold text-white">Trusted by the world’s most innovative teams</h2>
-        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-          <img
-            alt="Transistor"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
+  const logos = [
+    {
+      name: "Transistor",
+      src: "https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg",
+    },
+    {
+      name: "Reform",
+      src: "https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg",
+    },
+    {
+      name: "Tuple",
+      src: "https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg",
+    },
+    {
+      name: "SavvyCal",
+      src: "https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg",
+    },
+    {
+      name: "Statamic",
+      src: "https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg",
+    },
+  ];
 
-          <img
-            alt="Reform"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
+   return (
+    <div className="bg-gray-900 py-24 overflow-hidden">
+      <h2 className="text-center text-white text-2xl font-bold mb-12">
+        Trusted by the world's most innovative teams
+      </h2>
 
-          <img
-            alt="Tuple"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <img
-            alt="SavvyCal"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-          />
-
-          <img
-            alt="Statamic"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-          />
+      <div className="relative overflow-hidden">
+        <div className="flex w-max animate-marquee">
+          {[...logos, ...logos].map((logo, index) => (
+            <div
+              key={index}
+              className="mx-10 flex h-24 w-48 items-center justify-center"
+            >
+              <img
+                src={logo.src}
+                alt="client"
+                className="max-h-12 w-full object-contain"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

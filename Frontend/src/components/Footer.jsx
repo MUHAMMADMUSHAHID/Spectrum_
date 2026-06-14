@@ -1,16 +1,16 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Team", href: "#team" },
-  { label: "Sectors", href: "#sectors" },
-  { label: "Clients", href: "#clients" },
-  { label: "Trainings", href: "#trainings" },
-  { label: "Why Spectrum", href: "#why" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Team", to: "/team" },
+  { label: "Sectors", to: "/about" },
+  { label: "Clients", to: "/#clients" },
+  { label: "Trainings", to: "/services" },
+  { label: "Why Spectrum", to: "/about" },
+  { label: "Testimonials", to: "/#testimonials" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const standards = [
@@ -66,12 +66,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="text-sm text-gray-400 transition-colors duration-200 hover:text-indigo-400"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -188,7 +188,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
               >
-                in
+                <FaLinkedinIn className="h-4 w-4" aria-hidden="true" />
               </a>
 
               <a
@@ -197,7 +197,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
               >
-                f
+                <FaFacebookF className="h-4 w-4" aria-hidden="true" />
               </a>
 
               <a
@@ -206,7 +206,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-gray-400 transition-all duration-200 hover:border-indigo-400/30 hover:text-indigo-400"
               >
-                ig
+                <FaInstagram className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
           </div>
