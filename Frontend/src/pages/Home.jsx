@@ -1,7 +1,8 @@
+
 import { useEffect } from 'react'
-import {  useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Aboutus from './Aboutus'
-import { Link } from 'react-router-dom'
 
 const Home = () => {
   const { hash } = useLocation()
@@ -16,64 +17,106 @@ const Home = () => {
   }, [hash])
 
   return (
-    <div className="bg-gray-900">
-      <div className="relative isolate px-6 pt-24 sm:pt-28 lg:pt-32 lg:px-8">
+    <div className="bg-white min-h-screen text-black dark:bg-gray-900 dark:text-white">
+      <div className="relative isolate overflow-hidden px-6 pt-28 md:pt-36 lg:pt-40 lg:px-8">
+        
+        {/* Background Blur Effects */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          className="absolute inset-0 -z-10"
         >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-          />
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 -left-24 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="mx-auto max-w-2xl py-20 sm:py-3lg:py-40">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-5 py-3 text-sm/6 text-gray-500 ring-1 ring-white/10 hover:ring-white/20">
-              ISO 9001 Consultants in Mumbai
-            </div>
-          </div>
-          <div className="text-center">
-            <h1 className="text-8xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-              Achieve ISO Certification with Confidence
-            </h1>
-            <p className="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-              Spectrum Quality Management offers ISO Certification services to clients in Mumbai, Pune, Goa, Nasik and other major cities in India.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="/contact"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block py-1 px-4 rounded-full bg-[#E4910C]/10 dark:bg-indigo-500/10 text-[#E4910C] dark:text-indigo-300 font-medium text-sm mb-4 border border-[#E4910C]/20 dark:border-indigo-500/20">
+                ISO 9001 Consultants in Mumbai
+              </span>
+            </motion.div>
+
+            <motion.p
+              className="text-[#E4910C] dark:text-indigo-400 font-semibold text-base uppercase tracking-widest mb-3"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+            >
+              Driving Excellence Through Compliance
+            </motion.p>
+
+            <motion.h1
+              className="text-[#002066] dark:text-white text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Achieve ISO Certification with{' '}
+              <span className="text-[#E4910C] dark:text-indigo-400">
+                Confidence
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Spectrum Quality Management offers ISO Certification consultancy
+              services to clients in Mumbai, Pune, Goa, Nasik and other major
+              cities in India.
+            </motion.p>
+
+            <motion.p
+              className="text-base text-gray-500 italic mb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              "Simplifying ISO, Strengthening Business"
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-md w-full sm:w-auto bg-[#E4910C] hover:bg-amber-400  dark:bg-indigo-500 text-white dark:hover:bg-indigo-600 text-base font-semibold px-8 h-12 shadow-lg transition-all duration-300"
               >
-               <Link to="/contact">
-                   Book Free 30-Min Consultation
-                </Link>
-              </a>
-              <a href="/services" className="text-sm/6 font-semibold text-white">
-                <Link to="/services">
-                    Explore Services
-                </Link>
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
+                Book Free 30-Min Consultation
+              </Link>
+
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center rounded-md w-full sm:w-auto text-base font-semibold px-8 border border-white/20 hover:bg-white/5 h-12 transition-all duration-300"
+              >
+                Explore Services
+              </Link>
+            </motion.div>
+
           </div>
         </div>
+
+        {/* Bottom Blur Effect */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          className="absolute inset-x-0 bottom-0 -z-10"
         >
-          <div
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-            className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
-          />
+          <div className="absolute right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
         </div>
       </div>
+
       <section id="about">
         <Aboutus />
       </section>

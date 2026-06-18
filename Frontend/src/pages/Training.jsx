@@ -48,56 +48,32 @@ export default function Training() {
 
       <section
         className="relative h-[350px] flex items-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        
       >
-        <div className="absolute inset-0 bg-[#032d6a]/85"></div>
+     
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="relative max-w-7xl mx-auto px- lg:px- ">
 
-          <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-            Quality Management
-            <br />
-            Training Programs
+          <h1 className="text-5xl lg:text-6xl font-bold  text-[#002C66] dark:text-white ">
+            Quality Management Training Programs
           </h1>
-
-          <div className="flex items-center gap-3 mt-8 text-sm">
-
-            <span className="text-white font-medium">
-              Home
-            </span>
-
-            <span className="text-gray-300">
-              &gt;
-            </span>
-
-            <span className="text-amber-400 font-semibold">
-              Training Programs
-            </span>
-
-          </div>
-
         </div>
       </section>
 
       {/* Intro */}
 
-      <section className="py-24">
+      <section className="">
 
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          <p className="text-2xl leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-2xl  text-gray-700 dark:text-gray-300">
 
             Spectrum provides a wide range of Training Programs in all
             major standards for Lead Auditors, Internal Auditors,
             and staff awareness.
 
             <br />
-            <br />
+            
 
             Our engaging workshops ensure your team is equipped
             to maintain and continuously improve your Quality
@@ -110,7 +86,7 @@ export default function Training() {
       </section>
             {/* Objectives & Audience */}
 
-      <section className="pb-24">
+      <section className="pb-24 pt-16">
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 

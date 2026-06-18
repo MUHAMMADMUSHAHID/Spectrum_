@@ -38,7 +38,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="bg-gray-900 py-20 overflow-hidden"
+      className="bg-white dark:bg-gray-900 py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
 
@@ -49,13 +49,12 @@ export default function Testimonials() {
             ⭐ Google Reviews
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold text-gray-900">
+          <h2 className="mt-4 text-4xl font-bold text-[#002C66] dark:text-white">
             What Our Clients Say
           </h2>
 
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Trusted by organizations across India for ISO Certification,
-            Consultancy and Training Services.
+          <p className="mt-4 text-gray-500 dark:text-gray-300 max-w-2xl mx-auto">
+            Long-term partnerships built on trust, transparency, and reliability.
           </p>
         </div>
 
@@ -97,7 +96,7 @@ export default function Testimonials() {
             href="https://g.page/r/YOUR_GOOGLE_REVIEW_LINK"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center rounded-xl bg-indigo-600 px-8 py-4 text-white font-semibold shadow-lg transition hover:bg-indigo-700 hover:scale-105"
+            className="inline-flex items-center rounded-xl bg-[#E4910C] dark:bg-indigo-600 px-8 py-4 text-white font-semibold shadow-lg transition hover:bg-indigo-700 hover:scale-105"
           >
             View All Google Reviews →
           </a>
