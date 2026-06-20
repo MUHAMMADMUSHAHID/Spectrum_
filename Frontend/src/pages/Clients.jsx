@@ -54,7 +54,7 @@ export default function Example() {
         </div>
       </div>
       <div className="relative overflow-hidden">
-        <div className="flex w-max animate-marquee">
+        <div className="flex w-max animate-marquee-reverse">
           {[...logos, ...logos].map((logo, index) => (
             <div
               key={index}

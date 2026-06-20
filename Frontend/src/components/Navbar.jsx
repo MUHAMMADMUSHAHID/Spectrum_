@@ -13,28 +13,33 @@ const navigation = [
     to: "/services",
     submenu: [
       {
-        name: "ISO 14001:2015",
+        name: "ISO 9001 – QMS",
         to: "/services/iso-14001-2015",
       },
       {
-        name: "ISO 45001:2018",
+        name: "ISO 14001 – EMS",
         to: "/services/iso-45001-2018",
       },
       {
-        name: "ISO 22000:2018 / HACCP",
+        name: "ISO 45001 – OHSMS",
         to: "/services/iso-22000-2018",
       },
       {
-        name: "ISO 13485:2016",
+        name: "ISO 27001 – ISMS",
         to: "/services/iso-13485-2016",
       },
       {
-        name: "ISO 27001:2022",
+        name: "ISO 22000 – FSMS",
         to: "/services/iso-27001-2022",
       },
       {
-        name: "IATF 16949:2016",
+        name: "CE Marking",
         to: "/services/iatf-16949-2016",
+      },
+      {
+        name:"NABL",
+        to:"/services/nabl"
+
       },
     ],
   },
@@ -43,7 +48,10 @@ const navigation = [
     name: "Training",
     to: "/training",
   },
-
+  {
+    name: "Team",
+    to: "/team",
+  },
   {
     name: "Clients",
     to: "/clients",
@@ -169,7 +177,7 @@ export default function Navbar() {
           <ThemeToggle />
            <Link
     to="/contact"
-    className="inline-flex items-center justify-center rounded-md bg-[#E4910C] px-10 h-10 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-amber-400 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+    className="inline-flex items-center justify-center rounded-md bg-[#E4910C] px-5 h-10 text-sm font-semibold text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 dark:bg-indigo-500 dark:hover:bg-indigo-600"
   >
     Book Consultation
   </Link>
@@ -234,6 +242,13 @@ export default function Navbar() {
 
           <div className="mt-5 flex justify-center">
             <ThemeToggle />
+             <Link
+    to="/contact"
+    onClick={() => setMobileMenuOpen(false)}
+    className="inline-flex items-center justify-center rounded-md bg-[#E4910C] px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-amber-400 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+  >
+    Book Free Consultation
+  </Link>
           </div>
 
           <div className="mt-8 space-y-3">

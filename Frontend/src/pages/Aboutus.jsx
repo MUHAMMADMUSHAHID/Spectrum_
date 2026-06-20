@@ -4,6 +4,7 @@ import Testimonials from './Testimonials'
 import EmployeeSection from '../components/EmployeeSection'
 import TeamSection from '../components/TeamSection'
 import { motion } from 'framer-motion'
+import ServicesIndex from './Services/ServicesIndex'
 
 export default function Example() {
   return (
@@ -106,10 +107,10 @@ export default function Example() {
 </div>
       </div>
       <EmployeeSection />
-      <TeamSection />
       <section id="clients" className="scroll-mt-28">
         <Clients />
       </section>
+      <ServicesIndex />
       <section id="testimonials" className="scroll-mt-28">
         <Testimonials />
       </section>
