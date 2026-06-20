@@ -64,7 +64,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-all">
+   <header className="fixed inset-x-0 top-0 z-50 bg-white/5 dark:bg-black/10 backdrop-blur-md transition-all">
 
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
 
@@ -90,7 +90,7 @@ export default function Navbar() {
               >
                 <Link
                   to={item.to}
-                  className="font-semibold text-sm text-gray-900 dark:text-white hover:text-indigo-500 transition"
+                  className="font-semibold text-sm text-gray-900 dark:text-white hover:text-[#E4910C] dark:hover:text-indigo-500 transition"
                 >
                   {item.name}
                 </Link>
@@ -131,7 +131,8 @@ export default function Navbar() {
                       dark:text-gray-300
                       hover:bg-gray-100
                       dark:hover:bg-white/5
-                      hover:text-indigo-500
+                      hover:text-[#E4910C]
+                      dark:hover:text-indigo-500
                       transition
                       "
                     >
@@ -149,7 +150,8 @@ export default function Navbar() {
                 font-semibold
                 text-gray-900
                 dark:text-white
-                hover:text-indigo-500
+                hover:text-[#E4910C]
+                dark:hover:text-indigo-500
                 transition
                 "
               >
@@ -165,8 +167,15 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
 
           <ThemeToggle />
+           <Link
+    to="/contact"
+    className="inline-flex items-center justify-center rounded-md bg-[#E4910C] px-10 h-10 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-amber-400 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+  >
+    Book Consultation
+  </Link>
 
         </div>
+
 
         {/* Mobile Button */}
 
@@ -257,7 +266,8 @@ export default function Navbar() {
                       dark:text-gray-300
                       hover:bg-gray-100
                       dark:hover:bg-white/5
-                      hover:text-indigo-500
+                      hover:text-[#E4910C]
+                      dark:hover:text-indigo-500
                       transition
                       "
                     >
@@ -284,7 +294,8 @@ export default function Navbar() {
                 dark:text-white
                 hover:bg-gray-100
                 dark:hover:bg-white/5
-                hover:text-indigo-500
+                hover:text-[#E4910C]
+                dark:hover:text-indigo-500
                 transition
                 "
               >
