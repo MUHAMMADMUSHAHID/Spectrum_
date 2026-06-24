@@ -23,6 +23,8 @@ import ISO13485 from "./pages/Services/ISO13485";
 import ISO27001 from "./pages/Services/ISO27001";
 import IATF16949 from "./pages/Services/IATF16949";
 import ServicesIndex from "./pages/Services/ServicesIndex";
+import AnimatedBackground from "./components/Background/AnimatedBackground";
+import SmoothScroll from "./components/SmoothScroll";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
     <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
   
       <Navbar />
+      <SmoothScroll>
+      <AnimatedBackground>
       <Routes>
 
         {/* Main Pages */}
@@ -76,6 +80,8 @@ function App() {
         />
 
       </Routes>
+      </AnimatedBackground>
+      </SmoothScroll>
       <Footer />
       </div>
     </>

@@ -67,3 +67,26 @@ html {
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
+.bg-grid{
+background-image:
+linear-gradient(rgba(0,0,0,.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,0,0,.08) 1px,transparent 1px);
+
+background-size:45px 45px;
+}
+
+body{
+
+background:#ffffff;
+
+color:#111827;
+
+font-family:Inter,sans-serif;
+
+overflow-x:hidden;
+
+scroll-behavior:smooth;
+
+}
