@@ -1,6 +1,12 @@
 import { useState } from "react";
 import api from "../api";
 import toast from "react-hot-toast";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+} from "lucide-react";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -57,186 +63,252 @@ export default function ContactUs() {
 };
 
   return (
-    <section
-      id="contact"
-      className="bg-white dark:bg-gray-900 py-24 sm:py-32"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base font-semibold text-indigo-400">
-            Contact Us
+  <section
+    id="contact"
+    className="bg-white dark:bg-gray-900 py-24 sm:py-32"
+  >
+    <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+      {/* Heading */}
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="text-base font-semibold text-[#E4910C]">
+          Contact Us
+        </h2>
+
+        <h1 className="mt-4 text-4xl font-bold text-[#002C66] dark:text-white sm:text-5xl">
+          Contact Spectrum Quality Management
+        </h1>
+
+        <p className="mt-4 text-gray-600 dark:text-gray-300">
+          Get expert guidance for ISO Certifications, Audits, Training and
+          Compliance Solutions.
+        </p>
+      </div>
+
+      {/* Main Layout */}
+      <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        {/* LEFT SIDE FORM */}
+        <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-lg">
+
+          <h2 className="text-3xl font-bold text-[#002C66] dark:text-white mb-8">
+            Send an Enquiry
           </h2>
 
-          <p className="mt-2 text-4xl font-semibold text-[#002C66] dark:text-white sm:text-5xl">
-          Contact Spectrum Quality Management
-          </p>
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
 
-          <h1 className="mt-6 text-4xl text-[#E4910C] dark:text-indigo-400 sm:text-5xl">
-            Send an Enquiry
-          </h1>
-        </div>
+              {/* Name */}
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Full Name
+                </label>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mx-auto mt-16 max-w-3xl"
-        >
-          <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                  placeholder="John Doe"
+                />
+              </div>
 
-            {/* Name */}
-            <div>
-              <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                Full Name
-              </label>
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Email Address
+                </label>
 
-              <input
-                type="text"
-                name="name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="block w-full rounded-md border border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="Enter your name"
-              />
-            </div>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                  placeholder="john@company.com"
+                />
+              </div>
 
-            {/* Company */}
-            <div>
-              <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                Company Name
-              </label>
+              {/* Phone */}
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Phone Number
+                </label>
 
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                className="block w-full rounded-md border border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="Company name"
-              />
-            </div>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                  placeholder="+91..."
+                />
+              </div>
 
-            {/* Email */}
-            <div>
-              <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                Email Address
-              </label>
+              {/* Company */}
+              <div>
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Company Name
+                </label>
 
-              <input
-                type="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="block w-full rounded-md border border-gray-600 dark:border-white/10  bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="your@email.com"
-              />
-            </div>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                  placeholder="Your Company Ltd."
+                />
+              </div>
 
-            {/* Phone */}
-            <div>
-              <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                Phone Number
-              </label>
+              {/* Service */}
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Service Interested In
+                </label>
 
-              <input
-                type="tel"
-                name="phone"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-                className="block w-full rounded-md border  border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="+91 XXXXX XXXXX"
-              />
-            </div>
-
-            {/* Certification */}
-            {/* Certification */}
-<div>
-  <label className="block text-sm font-medium text-black dark:text-white mb-2">
-    Certification Required
-  </label>
-
-  <select
-    name="service"
-    value={formData.service}
-    onChange={handleChange}
-    className="block w-full rounded-md border border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-black dark:text-white focus:border-indigo-500 focus:outline-none"
-  >
-    <option value="">Select Service</option>
-
-    <option value="ISO 9001">
-      ISO 9001:2015
-    </option>
-
-    <option value="ISO 14001">
-      ISO 14001:2015
-    </option>
-
-    <option value="ISO 45001">
-      ISO 45001:2018
-    </option>
-
-    <option value="ISO 22000">
-      ISO 22000:2018 / HACCP
-    </option>
-
-    <option value="ISO 13485">
-      ISO 13485:2016
-    </option>
-
-    <option value="ISO 27001">
-      ISO 27001:2022
-    </option>
-
-    <option value="IATF 16949">
-      IATF 16949:2016
-    </option>
-  </select>
-</div>
-
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                >
+                  <option value="">Select a service</option>
+                  <option value="ISO 9001">ISO 9001:2015</option>
+                  <option value="ISO 14001">ISO 14001:2015</option>
+                  <option value="ISO 45001">ISO 45001:2018</option>
+                  <option value="ISO 22000">ISO 22000:2018 / HACCP</option>
+                  <option value="ISO 13485">ISO 13485:2016</option>
+                  <option value="ISO 27001">ISO 27001:2022</option>
+                  <option value="IATF 16949">IATF 16949:2016</option>
+                </select>
+              </div>
             {/* City */}
-            <div>
-              <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                City
-              </label>
-
-              <input
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                className="block w-full rounded-md border border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="Mumbai"
-              />
-            </div>
-
-            {/* Message */}
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-black dark:text-white mb-2">
-                Message
+                  City
               </label>
 
-              <textarea
-                rows={5}
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="block w-full rounded-md border border-gray-600 dark:border-white/10 bg-white dark:bg-gray-800 px-4 py-3 text-white placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-                placeholder="Tell us about your certification requirements..."
-              />
+              <input
+               type="text"
+                name="city"
+               value={formData.city}
+              onChange={handleChange}
+             className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+             placeholder="Mumbai"
+               />
+              </div>
+              {/* Message */}
+              <div className="sm:col-span-2">
+                <label className="block text-sm font-medium text-black dark:text-white mb-2">
+                  Message
+                </label>
+
+                <textarea
+                  rows={5}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-4 py-3 text-black dark:text-white"
+                  placeholder="How can we help you?"
+                />
+              </div>
+
             </div>
+
+            <div className="mt-8">
+              <button
+                type="submit"
+                className="w-full rounded-md bg-[#E4910C] px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600"
+              >
+                Send Enquiry
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div>
+
+          <h2 className="text-3xl font-bold text-[#002C66] dark:text-white mb-8">
+            Contact Information
+          </h2>
+
+          <div className="space-y-8">
+
+            <div>
+              <h3 className="font-bold text-[#002C66] dark:text-white">
+                Our Address
+              </h3>
+
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                Unit No PAP-R-251,
+                <br />
+                Navi Mumbai, India
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-[#002C66] dark:text-white">
+                Phone Numbers
+              </h3>
+
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                +91 9324346684
+                <br />
+                +91 9930076684
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-[#002C66] dark:text-white">
+                Email Addresses
+              </h3>
+
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                info@isoqms.in
+                <br />
+                enquiry@isoqms.in
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-[#002C66] dark:text-white">
+                Working Hours
+              </h3>
+
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                Monday - Saturday
+                <br />
+                9:00 AM - 6:00 PM
+              </p>
+            </div>
+
           </div>
 
-          <div className="mt-8">
-            <button
-              type="submit"
-              className="w-full rounded-md bg-[#E4910C] dark:bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition-colors"
-            >
-              Request Free Consultation
-            </button>
+          {/* Google Map */}
+          <div className="mt-10 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+
+            <iframe
+              title="Spectrum Location"
+              src="https://www.google.com/maps?q=Navi%20Mumbai&output=embed"
+              width="100%"
+              height="320"
+              style={{ border: 0 }}
+              loading="lazy"
+            />
+
           </div>
-        </form>
+
+        </div>
+
       </div>
-    </section>
-  );
+
+    </div>
+  </section>
+);
 }
