@@ -1,18 +1,49 @@
 import { Link } from "react-router-dom";
 import isoImage from "../assets/iso-certification.jpg";
 const otherServices = [
-  { name: "ISO 14001 – EMS", link: "/services/iso-14001-2015" },
-  { name: "ISO 45001 – OHSMS", link: "/services/iso-45001-2018" },
-  { name: "ISO 27001 – ISMS", link: "/services/iso-27001-2022" },
-  { name: "ISO 22000 – FSMS", link: "/services/iso-22000-2018" },
-  { name: "CE Marking", link: "/services/ce-marking" },
-  { name: "NABL", link: "/services/nabl" },
+  {
+    name: "ISO 9001 – Quality Management System",
+    link: "/services/iso-9001-2015",
+  },
+  {
+    name: "ISO 14001 – Environmental Management System",
+    link: "/services/iso-14001-2015",
+  },
+  {
+    name: "ISO 45001 – Occupational Health & Safety",
+    link: "/services/iso-45001-2018",
+  },
+  {
+    name: "ISO 22000 – Food Safety Management",
+    link: "/services/iso-22000-2018",
+  },
+  {
+    name: "ISO 27001 – Information Security Management",
+    link: "/services/iso-27001-2022",
+  },
+  {
+    name: "ISO 13485 – Medical Devices",
+    link: "/services/iso-13485-2016",
+  },
+  {
+    name: "ISO 22301 – Business Continuity Management",
+    link: "/services/iso-22301-2019",
+  },
+  {
+    name: "CE Marking",
+    link: "/services/ce-marking",
+  },
+  {
+    name: "Training Management",
+    link: "/training",
+  },
 ];
 export default function CertificationPage({
   title,
   description,
   benefits,
   whoNeeds,
+  currentService,
 }) {
  return (
   <div className="bg-white dark:bg-gray-900 min-h-screen pt-24">
@@ -140,7 +171,7 @@ export default function CertificationPage({
               to="/contact"
               className="block rounded-lg bg-[#E4910C] px-4 py-3 text-sm font-semibold text-white hover:bg-orange-600"
             >
-              Book Free Consultation
+              Book Consultation
             </Link>
           </div>
 
@@ -151,7 +182,9 @@ export default function CertificationPage({
             </h3>
 
             <ul className="mt-5 space-y-3">
-              {otherServices.map((service) => (
+             {otherServices
+  .filter((service) => service.name !== currentService)
+  .map((service) => (
                 <li key={service.name}>
                   <Link
                     to={service.link}

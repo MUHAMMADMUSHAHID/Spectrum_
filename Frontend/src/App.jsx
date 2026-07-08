@@ -16,12 +16,14 @@ import Training from "./pages/Training";
 // Add top padding to account for fixed navbar
 // const pageStyles = { paddingTop: '4rem' };
 
+import CEMarketing from "./pages/Services/CEMarketing";
+import ISO22301 from "./pages/Services/ISO22301";
+import ISO9001 from "./pages/Services/ISO9001";
 import ISO14001 from "./pages/Services/ISO14001";
 import ISO45001 from "./pages/Services/ISO45001";
 import ISO22000 from "./pages/Services/ISO22000";
 import ISO13485 from "./pages/Services/ISO13485";
 import ISO27001 from "./pages/Services/ISO27001";
-import IATF16949 from "./pages/Services/IATF16949";
 import ServicesIndex from "./pages/Services/ServicesIndex";
 import AnimatedBackground from "./components/Background/AnimatedBackground";
 import SmoothScroll from "./components/SmoothScroll";
@@ -53,6 +55,7 @@ function App() {
         />
 
         <Route path="/services" element={<ServicesIndex />} />
+        
 
         <Route
           path="/services/iso-45001-2018"
@@ -74,10 +77,10 @@ function App() {
           element={<ISO27001 />}
         />
 
-        <Route
-          path="/services/iatf-16949-2016"
-          element={<IATF16949 />}
+        <Route path="/services/iso-9001-2015" element={<ISO9001 />} 
         />
+        <Route path="/services/iso-22301-2019" element={<ISO22301 />} />
+        <Route path="/services/ce-marketing" element={<CEMarketing />} />
 
       </Routes>
       </AnimatedBackground>

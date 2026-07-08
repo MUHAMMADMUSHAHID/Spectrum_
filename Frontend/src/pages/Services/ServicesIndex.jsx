@@ -1,7 +1,22 @@
 import { Link } from 'react-router-dom'
-import { FaLeaf, FaHardHat, FaAppleAlt, FaStethoscope, FaLock, FaCar } from 'react-icons/fa'
+import {
+  FaCheckCircle,
+  FaLeaf,
+  FaShieldAlt,
+  FaUtensils,
+  FaStethoscope,
+  FaLock,
+  FaAward,
+  FaBriefcase,
+} from "react-icons/fa";
 
 const services = [
+  {
+    title: 'ISO 9001:2015',
+    to: '/services/iso-9001-2015',
+    icon: FaCheckCircle,
+    desc: 'Quality management system to enhance customer satisfaction and business performance.',
+  },
   {
     title: 'ISO 14001:2015',
     to: '/services/iso-14001-2015',
@@ -11,13 +26,13 @@ const services = [
   {
     title: 'ISO 45001:2018',
     to: '/services/iso-45001-2018',
-    icon: FaHardHat,  
+    icon: FaShieldAlt,
     desc: 'Occupational health & safety management to reduce workplace risks.',
   },
   {
-    title: 'ISO 22000:2018 / HACCP',
+    title: 'ISO 22000:2018',
     to: '/services/iso-22000-2018',
-    icon: FaAppleAlt,
+    icon: FaUtensils,
     desc: 'Food safety management and HACCP principles for supply chains.',
   },
   {
@@ -33,11 +48,18 @@ const services = [
     desc: 'Information security management to protect sensitive data.',
   },
   {
-    title: 'IATF 16949:2016',
-    to: '/services/iatf-16949-2016',
-    icon: FaCar,
-    desc: 'Automotive industry quality management standard for suppliers.',
+    title: 'ISO 22301:2019',
+    to: '/services/iso-22301-2019',
+    icon: FaBriefcase,
+    desc: 'Business continuity management to ensure operational resilience.',
   },
+  {
+    title: 'CE Marketing',
+    to: '/services/ce-marketing',
+    icon: FaAward,
+    desc: 'Demonstrates compliance with EU safety, health, and environmental requirements.',
+  }
+
 ]
 
 export default function ServicesIndex() {
@@ -53,7 +75,7 @@ export default function ServicesIndex() {
           From quality management to food safety, information security, and environmental compliance — we cover every standard your business needs.
         </p>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
   {services.map((s) => {
     const Icon = s.icon;
 

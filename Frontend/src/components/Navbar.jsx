@@ -66,8 +66,8 @@ const navigation = [
         to: "/services/iso-22301-2019",
       },
       {
-        name: "CE Marking",
-        to: "/services/ce-marking",
+        name: "CE Marketing",
+        to: "/services/ce-marketing",
       },
       {
         name: "Training Management",
