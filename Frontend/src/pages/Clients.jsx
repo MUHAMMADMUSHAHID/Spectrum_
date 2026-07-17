@@ -1,4 +1,37 @@
 import Marquee from "react-fast-marquee";
+const images = import.meta.glob(
+  "../assets/clients/*.{png,jpg,jpeg,svg,webp}",
+  {
+    eager: true,
+    import: "default",
+  }
+);
+const logos = Object.entries(images).map(([path, image]) => ({
+  name: path
+    .split("/")
+    .pop()
+    .replace(/\.[^/.]+$/, "")
+    .replace(/[-_]/g, " "),
+  src: image,
+}));
+const row1 = logos.slice(0, 15);
+
+const row2 = logos.slice(15);
+
+function LogoCard({ logo }) {
+  return (
+    <div className="mx-5">
+      <div className="group flex h-32 w-56 items-center justify-center rounded-2xl border border-gray-200 bg-white p-6 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all">
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className="max-h-16 max-w-full object-contain group-hover:scale-110 transition-transform"
+        />
+      </div>
+    </div>
+  );
+}
+
 
 export default function Example() {
   const logos = [
@@ -37,38 +70,41 @@ export default function Example() {
               <p className="text-lg text-foreground/80 leading-relaxed">We have successfully served 120+ satisfied clients across Mumbai, Pune, Goa, and other major cities in India, helping them achieve their certification and quality goals.</p>
             </div>
 
-      <div className="relative overflow-hidden">
-        <div className="flex w-max animate-marquee">
-          {[...logos, ...logos].map((logo, index) => (
-            <div
-              key={index}
-              className="mx-10 flex h-24 w-48 items-center justify-center"
-            >
-              <img
-  src={logo.src}
-  alt={logo.name}
-  className="max-h-12 w-full object-contain dark:invert-0 invert"
-/>
-            </div>
-          ))}
-        </div>
+      {/* Row 1 */}
+<div className="relative overflow-hidden">
+  <div className="flex w-max animate-marquee">
+    {[...row1, ...row1].map((logo, index) => (
+      <div
+        key={index}
+        className="mx-10 flex h-24 w-48 items-center justify-center"
+      >
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className="max-h-12 w-full object-contain"
+        />
       </div>
-      <div className="relative overflow-hidden">
-        <div className="flex w-max animate-marquee-reverse">
-          {[...logos, ...logos].map((logo, index) => (
-            <div
-              key={index}
-              className="mx-10 flex h-24 w-48 items-center justify-center"
-            >
-              <img
-  src={logo.src}
-  alt={logo.name}
-  className="max-h-12 w-full object-contain dark:invert-0 invert"
-/>
-            </div>
-          ))}
-        </div>
+    ))}
+  </div>
+</div>
+
+{/* Row 2 */}
+<div className="relative overflow-hidden mt-8">
+  <div className="flex w-max animate-marquee-reverse">
+    {[...row2, ...row2].map((logo, index) => (
+      <div
+        key={index}
+        className="mx-10 flex h-24 w-48 items-center justify-center"
+      >
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className="max-h-12 w-full object-contain"
+        />
       </div>
+    ))}
+  </div>
+</div>
     </div>
   );
 }

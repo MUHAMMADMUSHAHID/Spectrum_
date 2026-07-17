@@ -1,3 +1,32 @@
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+    scale: 0.96,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.35,
+      ease: "easeOut",
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+
 const people = [
   {
     name: "Kausar Shaikh",
@@ -102,22 +131,66 @@ export default function TeamSection() {
           </p>
         </div>
 
-        {/* Team Grid */}
-   <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
+       
+   {/* Team Grid */}
+
+<motion.div
+  className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2"
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true, amount: 0.2 }}
+>
   {people.map((person) => (
-    <div
+    <motion.div
       key={person.name}
-      className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      variants={cardVariants}
+      whileHover={{
+  y: -10,
+  scale: 1.025,
+}}
+
+transition={{
+  type: "spring",
+  stiffness: 420,
+  damping: 20,
+}}
+     className="
+rounded-[28px]
+border
+border-slate-200
+bg-white
+p-6
+
+shadow-[0_10px_30px_rgba(228,145,12,0.18)]
+hover:shadow-[0_20px_60px_rgba(228,145,12,0.42)]
+
+hover:border-[#E4910C]
+
+transition-all
+duration-300
+
+dark:bg-gray-800
+dark:border-gray-700
+
+dark:shadow-[0_12px_35px_rgba(0,0,0,0.45)]
+dark:hover:shadow-[0_25px_70px_rgba(99,102,241,0.45)]
+dark:hover:border-indigo-500
+"
     >
       <div className="flex gap-5">
         {/* Initials */}
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-[#002C66] text-3xl font-bold text-white">
+        <motion.div
+          whileHover={{ rotate: 5, scale: 1.08 }}
+          transition={{ duration: 0.3 }}
+          className="flex h-20 w-20 shrink-0 items-center justify-center rounded-3xl bg-[#002C66] text-3xl font-bold text-white"
+        >
           {person.initials}
-        </div>
+        </motion.div>
 
         {/* Details */}
         <div className="flex-1">
-          <h3 className="text-2xl font-bold text-[#002C66]">
+          <h3 className="text-2xl font-bold text-[#002C66] dark:text-white">
             {person.name}
           </h3>
 
@@ -125,32 +198,41 @@ export default function TeamSection() {
             {person.role}
           </p>
 
-          <p className="mt-1 italic text-slate-500">
+          <p className="mt-1 italic text-slate-500 dark:text-gray-400">
             {person.education}
           </p>
 
           <ul className="mt-4 space-y-2">
             {person.certifications.map((cert, idx) => (
-              <li
+              <motion.li
                 key={idx}
-                className="flex items-start gap-3 text-slate-600"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: idx * 0.1,
+                }}
+                viewport={{ once: true }}
+                className="flex items-start gap-3 text-slate-600 dark:text-gray-300"
               >
                 <span className="mt-2 h-2 w-2 rounded-full bg-[#E4910C]" />
                 <span>{cert}</span>
-              </li>
+              </motion.li>
             ))}
           </ul>
 
           <div className="mt-5">
-            <span className="inline-flex rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-semibold text-[#002C66]">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-semibold text-[#002C66] dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+            >
               {person.experience}
-            </span>
+            </motion.span>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   ))}
-</div>
+</motion.div>
       </div>
     </section>
   );
